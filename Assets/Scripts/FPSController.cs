@@ -153,12 +153,13 @@ public class FPSController : MonoBehaviour
         }
     }
 
-        private void TryInteract()
+    private void TryInteract()
     {
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, interactionDistance, interactableLayer))
+        // Change: Use ~0 to check all layers, not just interactableLayer
+        if (Physics.Raycast(ray, out hit, interactionDistance, ~0))
         {
             InteractableItem item = hit.collider.GetComponent<InteractableItem>();
             if (item != null)
@@ -174,6 +175,7 @@ public class FPSController : MonoBehaviour
                     Debug.Log("Inventory full!");
                 }
             }
+            // If no InteractableItem component, it hit something else (like a wall), so do nothing
         }
     }
 
@@ -220,15 +222,25 @@ private void HandleSlotSelection()
     {
         if (itemData.dropPrefab != null)
         {
-            Vector3 spawnPosition = transform.position + transform.forward * 2f;
-            GameObject droppedItem = Instantiate(itemData.dropPrefab, spawnPosition, Quaternion.identity);
+            Vector3 intendedDropPosition = transform.position + transform.forward * 2f;
+            Vector3 actualDropPosition = intendedDropPosition;
+
+            // Raycast to check for obstacles in front
+            Ray ray = new Ray(transform.position, transform.forward);
+            if (Physics.Raycast(ray, 2f, ~0))  // Check all layers for obstacles
+            {
+                // If hit something, drop above player's head instead
+                actualDropPosition = transform.position + Vector3.up * 2f;
+            }
+
+            GameObject droppedItem = Instantiate(itemData.dropPrefab, actualDropPosition, Quaternion.identity);
             InteractableItem itemScript = droppedItem.GetComponentInChildren<InteractableItem>();
             if (itemScript != null)
             {
                 itemScript.itemIcon = itemData.sprite;
                 itemScript.itemName = itemData.itemName;
                 itemScript.dropPrefab = itemData.dropPrefab;
-                Debug.Log("Dropped item: " + itemScript.itemName);
+                Debug.Log("Dropped item: " + itemScript.itemName + " at position: " + actualDropPosition);
             }
             else
             {
