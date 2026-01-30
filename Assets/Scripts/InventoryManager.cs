@@ -98,7 +98,23 @@ public class InventoryManager : MonoBehaviour
         selectedSlot = (selectedSlot - 1 + inventorySlots.Count) % inventorySlots.Count;
         UpdateUI();
     }
+    public string GetSelectedItemName()
+    {
+        if (selectedSlot >= 0 && selectedSlot < inventoryItems.Count)
+        {
+            return inventoryItems[selectedSlot].itemName;
+        }
+        return "";
+    }
 
+    public InventoryItem GetSelectedItem()
+    {
+       if (selectedSlot >= 0 && selectedSlot < inventoryItems.Count)
+        {
+           return inventoryItems[selectedSlot];
+        }
+        return default;
+    }
     private void UpdateUI()
     {
         for (int i = 0; i < inventorySlots.Count; i++)

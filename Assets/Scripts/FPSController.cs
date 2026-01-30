@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro; 
+using TMPro;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
@@ -40,12 +40,16 @@ public class FPSController : MonoBehaviour
     private InputAction slot3Action;
     private InputAction scrollWheelAction;
     private InputAction dropAction;
+    private InputAction useItemAction; // New: For LMB (UseItem action)
 
     private CharacterController controller;
     private Camera playerCamera;
     private Vector3 velocity;
     private Vector3 horizontalVelocity;
     private float xRotation = 0f;
+
+    // New: For mask preview
+    private GameObject currentMaskClone = null;
 
     private void Awake()
     {
@@ -62,6 +66,7 @@ public class FPSController : MonoBehaviour
         slot2Action = playerActionMap.FindAction("Slot2");
         slot3Action = playerActionMap.FindAction("Slot3");
         dropAction = playerActionMap.FindAction("Drop");
+        useItemAction = playerActionMap.FindAction("Attack"); // New: Add this action in your InputActionAsset
 
         // New: Find the UI action map and its ScrollWheel action.
         var uiActionMap = inputActions.FindActionMap("UI");
@@ -77,6 +82,7 @@ public class FPSController : MonoBehaviour
         slot3Action.Enable();
         scrollWheelAction.Enable();
         dropAction.Enable();
+        useItemAction.Enable(); // New: Enable the UseItem action
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -94,6 +100,7 @@ public class FPSController : MonoBehaviour
         slot3Action.Disable();
         scrollWheelAction.Disable();
         dropAction.Disable();
+        useItemAction.Disable(); // New: Disable the UseItem action
     }
 
     private void Update()
@@ -102,6 +109,7 @@ public class FPSController : MonoBehaviour
         HandleMouseLook();
         HandleInteraction();
         HandleSlotSelection();
+        HandleMaskPreview(); // New: Handle mask preview logic
         UpdateInteractText();
     }
 
@@ -179,45 +187,100 @@ public class FPSController : MonoBehaviour
         }
     }
 
-private void HandleSlotSelection()
-{
-    Vector2 scrollInput = scrollWheelAction.ReadValue<Vector2>();
-    float scrollY = scrollInput.y;
-    if (scrollY > 0)
+    private void HandleSlotSelection()
     {
-        InventoryManager.Instance.SelectNextSlot();
-    }
-    else if (scrollY < 0)
-    {
-        InventoryManager.Instance.SelectPreviousSlot();
-    }
-
-    if (slot1Action.WasPressedThisFrame())
-    {
-        InventoryManager.Instance.SelectSlot(0);
-    }
-    if (slot2Action.WasPressedThisFrame())
-    {
-        InventoryManager.Instance.SelectSlot(1);
-    }
-    if (slot3Action.WasPressedThisFrame())
-    {
-        InventoryManager.Instance.SelectSlot(2);
-    }
-
-    if (dropAction.WasPressedThisFrame())
-    {
-        InventoryItem itemToDrop = InventoryManager.Instance.DropItem();
-        if (itemToDrop.dropPrefab != null)
+        Vector2 scrollInput = scrollWheelAction.ReadValue<Vector2>();
+        float scrollY = scrollInput.y;
+        if (scrollY > 0)
         {
-            DropItemInWorld(itemToDrop);
+            InventoryManager.Instance.SelectNextSlot();
+        }
+        else if (scrollY < 0)
+        {
+            InventoryManager.Instance.SelectPreviousSlot();
+        }
+
+        if (slot1Action.WasPressedThisFrame())
+        {
+            InventoryManager.Instance.SelectSlot(0);
+        }
+        if (slot2Action.WasPressedThisFrame())
+        {
+            InventoryManager.Instance.SelectSlot(1);
+        }
+        if (slot3Action.WasPressedThisFrame())
+        {
+            InventoryManager.Instance.SelectSlot(2);
+        }
+
+        if (dropAction.WasPressedThisFrame())
+        {
+            InventoryItem itemToDrop = InventoryManager.Instance.DropItem();
+            if (itemToDrop.dropPrefab != null)
+            {
+                DropItemInWorld(itemToDrop);
+            }
+            else
+            {
+                Debug.Log("No item to drop.");
+            }
+        }
+    }
+
+    // New: Method to handle mask preview
+    private void HandleMaskPreview()
+    {
+        string selectedItemName = InventoryManager.Instance.GetSelectedItemName();
+        bool isMask = !string.IsNullOrEmpty(selectedItemName) && selectedItemName.Contains("Mask");
+
+        if (isMask && useItemAction.IsPressed())
+        {
+            // Existing: Create/update clone
+            if (currentMaskClone == null)
+            {
+                InventoryItem selectedItem = InventoryManager.Instance.GetSelectedItem();
+                if (selectedItem.dropPrefab != null)
+                {
+                    currentMaskClone = Instantiate(selectedItem.dropPrefab);
+                    Collider[] colliders = currentMaskClone.GetComponentsInChildren<Collider>();
+                    foreach (Collider col in colliders)
+                    {
+                        col.enabled = false;
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Selected mask item has no dropPrefab!");
+                }
+            }
+
+            if (currentMaskClone != null)
+            {
+                Vector3 offsetPosition = playerCamera.transform.position + playerCamera.transform.forward * 0.15f + Vector3.up * -0.34f;
+                currentMaskClone.transform.position = offsetPosition;
+                currentMaskClone.transform.rotation = Quaternion.LookRotation(playerCamera.transform.forward * 0.1f);
+            }
+
+            // New: Check for doors to open
+            Door[] doors = FindObjectsOfType<Door>();
+            foreach (Door door in doors)
+            {
+                float distance = Vector3.Distance(transform.position, door.transform.position);
+                if (distance <= 2f && selectedItemName.Contains(door.requiredMask))
+                {
+                    door.OpenDoor();
+                }
+            }
         }
         else
         {
-            Debug.Log("No item to drop.");
+            if (currentMaskClone != null)
+            {
+                Destroy(currentMaskClone);
+                currentMaskClone = null;
+            }
         }
     }
-}
     private void DropItemInWorld(InventoryItem itemData)
     {
         if (itemData.dropPrefab != null)
