@@ -172,15 +172,10 @@ public class FPSController : MonoBehaviour
             InteractableItem item = hit.collider.GetComponent<InteractableItem>();
             if (item != null)
             {
-                Debug.Log("Picking up item with name: " + item.itemName + ", dropPrefab: " + (item.dropPrefab != null ? item.dropPrefab.name : "null"));
                 if (InventoryManager.Instance.AddItem(item))
                 {
                     item.OnPickup();
                     Debug.Log("Picked up: " + item.itemName);
-                }
-                else
-                {
-                    Debug.Log("Inventory full!");
                 }
             }
             // If no InteractableItem component, it hit something else (like a wall), so do nothing
@@ -248,10 +243,6 @@ public class FPSController : MonoBehaviour
                         col.enabled = false;
                     }
                 }
-                else
-                {
-                    Debug.LogError("Selected mask item has no dropPrefab!");
-                }
             }
 
             if (currentMaskClone != null)
@@ -288,11 +279,9 @@ public class FPSController : MonoBehaviour
             Vector3 intendedDropPosition = transform.position + transform.forward * 2f;
             Vector3 actualDropPosition = intendedDropPosition;
 
-            // Raycast to check for obstacles in front
             Ray ray = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(ray, 2f, ~0))  // Check all layers for obstacles
+            if (Physics.Raycast(ray, 2f, ~0))
             {
-                // If hit something, drop above player's head instead
                 actualDropPosition = transform.position + Vector3.up * 2f;
             }
 
@@ -303,11 +292,6 @@ public class FPSController : MonoBehaviour
                 itemScript.itemIcon = itemData.sprite;
                 itemScript.itemName = itemData.itemName;
                 itemScript.dropPrefab = itemData.dropPrefab;
-                Debug.Log("Dropped item: " + itemScript.itemName + " at position: " + actualDropPosition);
-            }
-            else
-            {
-                Debug.LogError("Dropped item prefab is missing InteractableItem script in hierarchy!");
             }
         }
     }

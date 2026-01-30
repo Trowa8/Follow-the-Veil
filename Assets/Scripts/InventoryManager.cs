@@ -144,7 +144,7 @@ public class InventoryManager : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Slot {i} has no parent Image component. Skipping parent darkening.");
+                Debug.LogWarning($"Slot {i} has no parent Image component");
             }
         }
 

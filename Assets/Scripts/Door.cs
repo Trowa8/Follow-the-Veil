@@ -7,10 +7,10 @@ public class Door : MonoBehaviour
     public string requiredMask = "Blue";
     
     [Tooltip("Distance the door moves when opening (in units).")]
-    public float moveDistance = 20f;
+    public float moveDistance = 5f;
     
     [Tooltip("Speed of movement (units per second).")]
-    public float moveSpeed = 3f;
+    public float moveSpeed = 2f;
     
     [Tooltip("Direction of movement (default: down).")]
     public Vector3 moveDirection = Vector3.down;
@@ -35,23 +35,17 @@ public class Door : MonoBehaviour
             if (movedDistance >= moveDistance)
             {
                 isOpening = false;
-                // Snap to exact final position to avoid floating-point errors
-                transform.position = originalPosition + moveDirection * moveDistance;
+                transform.position = originalPosition + moveDirection * moveDistance * 200f;
             }
         }
     }
 
-    // Call this to attempt opening the door (checks are done externally in FPSController)
     public void OpenDoor()
     {
         if (!isOpening)
         {
             isOpening = true;
             movedDistance = 0f;
-            Debug.Log($"Opening door: {gameObject.name}");
         }
     }
-
-    // Optional: Add a method to close the door if needed (e.g., after a delay)
-    // public void CloseDoor() { /* Implement reverse movement */ }
 }
