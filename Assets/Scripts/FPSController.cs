@@ -256,7 +256,7 @@ public class FPSController : MonoBehaviour
 
             if (currentMaskClone != null)
             {
-                Vector3 offsetPosition = playerCamera.transform.position + playerCamera.transform.forward * 0.15f + Vector3.up * -0.34f;
+                Vector3 offsetPosition = playerCamera.transform.position + playerCamera.transform.forward * 0.15f + Vector3.up * -0.35f;
                 currentMaskClone.transform.position = offsetPosition;
                 currentMaskClone.transform.rotation = Quaternion.LookRotation(playerCamera.transform.forward * 0.1f);
             }
