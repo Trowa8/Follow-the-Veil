@@ -226,7 +226,7 @@ public class FPSController : MonoBehaviour
     private void HandleMaskPreview()
     {
         string selectedItemName = InventoryManager.Instance.GetSelectedItemName();
-        bool isMask = !string.IsNullOrEmpty(selectedItemName) && selectedItemName.Contains("Mask");
+        bool isMask = !string.IsNullOrEmpty(selectedItemName) && selectedItemName.Contains("Mask") || selectedItemName.Contains("Key");
 
         if (isMask && useItemAction.IsPressed())
         {

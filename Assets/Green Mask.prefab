@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3548058692758199101}
   - component: {fileID: 2568466111336327785}
   m_Layer: 6
-  m_Name: Blue Mask
+  m_Name: Green Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22c1d47b8f15dc8478eacccd85ca07f4, type: 2}
+  - {fileID: 2100000, guid: 28bbfd48bff98ec4ea59a037f8e80eb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08dbaec636f5eb94b85afb31392158d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: b90f6fbff46969d4187a5da7d7eb5d1e, type: 3}
-  itemName: Blue Mask
+  itemIcon: {fileID: 21300000, guid: 058550e10ec16aa42b98def052c43331, type: 3}
+  itemName: Green Mask
   dropPrefab: {fileID: 2201593903956075811}
 --- !u!65 &-3548058692758199101
 BoxCollider:
