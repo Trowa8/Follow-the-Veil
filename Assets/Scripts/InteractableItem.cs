@@ -3,18 +3,24 @@ using UnityEngine;
 public class InteractableItem : MonoBehaviour
 {
     [Tooltip("The sprite to display in the inventory UI.")]
-    public Sprite itemIcon;  // Assign a sprite in the Inspector (e.g., an icon for the item).
+    public Sprite itemIcon;
 
     [Tooltip("Optional: Name of the item.")]
-    public string itemName = "Item";  // For future use, like tooltips.
+    public string itemName = "Item";
 
     [Tooltip("The prefab to instantiate when dropping this item.")]
-    public GameObject dropPrefab;  // Assign the item's prefab here (same as the one used to spawn it).
+    public GameObject dropPrefab; 
 
-    // Optional: Add effects when picked up, e.g., sound or particle.
+    [Tooltip("Whether this item can be picked up.")]
+    public bool canPickup = true;
+
     public void OnPickup()
     {
-        // Play a sound or effect here if desired.
-        Destroy(gameObject);  // Remove the object from the scene after pickup.
+        Destroy(gameObject); 
+    }
+
+    public void DisablePickup()
+    {
+        canPickup = false;
     }
 }

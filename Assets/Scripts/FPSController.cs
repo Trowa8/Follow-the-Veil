@@ -170,7 +170,7 @@ public class FPSController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactionDistance, ~0))
         {
             InteractableItem item = hit.collider.GetComponent<InteractableItem>();
-            if (item != null)
+            if (item != null && item.canPickup)  // Modified: Only pick up if canPickup is true
             {
                 if (InventoryManager.Instance.AddItem(item))
                 {
@@ -178,7 +178,7 @@ public class FPSController : MonoBehaviour
                     Debug.Log("Picked up: " + item.itemName);
                 }
             }
-            // If no InteractableItem component, it hit something else (like a wall), so do nothing
+            // If no InteractableItem component or canPickup is false, it hit something else (like a wall), so do nothing
         }
     }
 
@@ -286,7 +286,7 @@ public class FPSController : MonoBehaviour
             }
 
             GameObject droppedItem = Instantiate(itemData.dropPrefab, actualDropPosition, Quaternion.identity);
-            InteractableItem itemScript = droppedItem.GetComponentInChildren<InteractableItem>();
+            InteractableItem itemScript = droppedItem.GetComponent<InteractableItem>();
             if (itemScript != null)
             {
                 itemScript.itemIcon = itemData.sprite;
