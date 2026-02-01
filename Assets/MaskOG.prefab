@@ -101,9 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08dbaec636f5eb94b85afb31392158d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 4e9684d4f7b7f794a8b56d23b6a1286f, type: 3}
+  itemIcon: {fileID: 21300000, guid: 884c278dab868bb45a73f6ce2770c574, type: 3}
   itemName: Mask?
   dropPrefab: {fileID: 2201593903956075811}
+  canPickup: 1
 --- !u!65 &-3548058692758199101
 BoxCollider:
   m_ObjectHideFlags: 0
