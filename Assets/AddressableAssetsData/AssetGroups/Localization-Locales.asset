@@ -22,7 +22,7 @@ MonoBehaviour:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a4eb43a510df6ed45a02d8dc90450a6e
-    m_Address: Ukrainian (Ukraine) (uk-UA)
+    m_Address: Ukrainian (Ukraine)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale

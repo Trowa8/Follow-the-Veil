@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: En-Ua Locale_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: b31b397a87e430846a2dfb38559bf009, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 750046449664
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 839750029312
+    m_Localized: 'Info
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 910243696640
+    m_Localized: Run Away
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1330533928960
+    m_Localized: 'Controls:
+
+
+      WASD - Move
+
+      E - Interact
+
+      Q - Drop
+
+      LBM
+      - Use'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1630040788992
+    m_Localized: 'Credits:
+
+      Trowa8 - Game Development, Story, Programming
+
+      Vovanchik
+      - Writing, Story and Narative
+
+      MBK - 3d Art, Story, Game Design
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2106018795520
+    m_Localized: 'Ambiance By SoundsForYou from Pixabay
+
+      Lighter Sounds by
+      SoundReality from Pixabay
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2421996687360
+    m_Localized: Abandon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12058892472320
+    m_Localized: Blue Mask
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12110050398208
+    m_Localized: Yellow Mask
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12174655262720
+    m_Localized: Green Mask
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12212391415808
+    m_Localized: Red Mask
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12312022913024
+    m_Localized: Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12365718392832
+    m_Localized: Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12411973177344
+    m_Localized: Lock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13163680534528
+    m_Localized: Lost Ending
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13310858661888
+    m_Localized: Thanks For Playing.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13557940916224
+    m_Localized: Escaped Ending
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13580321722368
+    m_Localized: Thanks for Playing.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

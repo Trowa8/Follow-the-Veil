@@ -9,17 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bb1838fe8befb0429646b938e757ff3, type: 3}
-  m_Name: Ukrainian (Ukraine) (uk-UA)
+  m_Script: {fileID: 11500000, guid: 97269afb30aa84742ae3f3342603618a, type: 3}
+  m_Name: Game Locale_uk-UA
   m_EditorClassIdentifier: 
-  m_Identifier:
+  m_LocaleId:
     m_Code: uk-UA
+  m_SharedData: {fileID: 11400000, guid: 7c136bde2ff05ae43a3ab440e71f3bc0, type: 2}
   m_Metadata:
     m_Items: []
-  m_LocaleName: Ukrainian (Ukraine) (uk-UA)
-  m_CustomFormatCultureCode: 
-  m_UseCustomFormatter: 0
-  m_SortOrder: 10000
+  m_TableData: []
   references:
     version: 2
     RefIds: []

@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: En-Ua Locale Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: En-Ua Locale
+  m_TableCollectionNameGuidString: b31b397a87e430846a2dfb38559bf009
+  m_Entries:
+  - m_Id: 750046449664
+    m_Key: MainMenu/Canvas/Panel/PlayImg/Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 839750029312
+    m_Key: MainMenu/Canvas/Panel/InfoImg/Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 910243696640
+    m_Key: MainMenu/Canvas/Panel/ExitImg/Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1330533928960
+    m_Key: MainMenu/Canvas/InfoPanel/Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1630040788992
+    m_Key: MainMenu/Canvas/InfoPanel/Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2106018795520
+    m_Key: MainMenu/Canvas/InfoPanel/Credits2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2421996687360
+    m_Key: MainMenu/Canvas/InfoPanel/Button/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12058892472320
+    m_Key: MainGame/Blue Mask
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12110050398208
+    m_Key: MainGame/Yellow Mask
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12174655262720
+    m_Key: MainGame/Green Mask
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12212391415808
+    m_Key: MainGame/Red Mask
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12312022913024
+    m_Key: MainGame/Lock
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12365718392832
+    m_Key: MainGame/Lock (1)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12411973177344
+    m_Key: MainGame/Lock (1) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13163680534528
+    m_Key: Ending1/Canvas/Panel/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13310858661888
+    m_Key: Ending1/Canvas/Panel/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13557940916224
+    m_Key: Ending2/Canvas/Panel/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13580321722368
+    m_Key: Ending2/Canvas/Panel/Text (TMP) (1)
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2124508282835435772
+  references:
+    version: 2
+    RefIds:
+    - rid: 2124508282835435772
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1769932542133
