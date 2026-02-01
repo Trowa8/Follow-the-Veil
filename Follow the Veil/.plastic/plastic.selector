@@ -1,4 +1,0 @@
-repository "Follow the Veil/Follow the Veil@7972141875362@cloud"
-  path "/"
-    br "/main"
-    co "/main"
